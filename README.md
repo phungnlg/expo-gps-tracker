@@ -4,6 +4,10 @@ Expo / React Native POC for continuous GPS trip tracking with background locatio
 automatic trip detection, activity recognition, and geofencing. Built with
 TypeScript and Zustand.
 
+## Demo
+
+![Demo](screenshots/demo.gif)
+
 ## Screenshots
 
 | Tracking | Trip History | Geofences |
