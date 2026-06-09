@@ -10,6 +10,20 @@ TypeScript and Zustand.
 | --- | --- | --- |
 | ![Tracking](screenshots/01-tracking.png) | ![Trip History](screenshots/02-trip-history.png) | ![Geofences](screenshots/03-geofences.png) |
 
+## How it works
+
+```mermaid
+flowchart TD
+  GPS[expo-location + task-manager<br/>foreground + background GPS] --> TS[tracking store]
+  GPS --> AC[activity service<br/>expo-sensors -> Still/Walk/Run/Drive]
+  AC --> TS
+  TS --> TR[Tracking screen<br/>map + speed + activity]
+  TS -->|stop trip| TH[trip history store<br/>AsyncStorage]
+  TH --> HL[Trip History / Detail]
+  GPS --> GF[geofence store<br/>Haversine enter/exit]
+  GF --> GS[Geofences screen]
+```
+
 ## What it shows
 
 - **Live tracking** - real-time speed (km/h), activity badge (Still / Walking /
