@@ -32,13 +32,19 @@ function distanceBetween(
   return R * c;
 }
 
+const DEMO_ZONES: GeofenceZone[] = [
+  { id: 'demo-z1', name: 'Home', center: { lat: 10.7769, lng: 106.7009 }, radiusMeters: 150, isActive: true },
+  { id: 'demo-z2', name: 'Office', center: { lat: 10.7905, lng: 106.6822 }, radiusMeters: 200, isActive: true },
+  { id: 'demo-z3', name: 'Gym', center: { lat: 10.7626, lng: 106.6822 }, radiusMeters: 100, isActive: false },
+];
+
 export const useGeofenceStore = create<GeofenceState>((set, get) => ({
-  zones: [],
-  triggeredZoneIds: [],
+  zones: DEMO_ZONES,
+  triggeredZoneIds: ['demo-z1'],
 
   loadZones: async () => {
     const zones = await storageService.loadGeofences();
-    set({ zones });
+    set({ zones: zones.length ? zones : DEMO_ZONES });
   },
 
   addZone: async (name: string, center: GeofenceCenter, radiusMeters: number) => {
