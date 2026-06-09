@@ -62,5 +62,3 @@ npx expo run:ios   # builds a dev client (react-native-maps is a native module)
 
 react-native-maps and the background location task are native modules, so this POC
 needs a dev build (`expo run:ios` / `expo run:android`), not Expo Go.
-
-See [FLOW.md](FLOW.md) for how the committed screenshots are regenerated.
